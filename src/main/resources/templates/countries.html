@@ -38,6 +38,7 @@
             <th scope="col">Description</th>
             <th scope="col">Capital</th>
             <th scope="col">Code</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -46,6 +47,12 @@
             <td th:text="${country.description}"></td>
             <td th:text="${country.capital}"></td>
             <td th:text="${country.code}"></td>
+            <td>
+                <div class="btn-group">
+                    <button th:id="${country.id}"
+                            type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -108,10 +115,50 @@
     </div>
 </div>
 
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Country</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/countries}" th:method="put" id="edit-form">
+                    <div class="mb-3">
+                        <label for="description-edit" class="col-form-label">Description:</label>
+                        <input type="text" class="form-control" id="description-edit" name="description">
+                    </div>
+                    <div class="mb-3">
+                        <label for="capital-edit" class="col-form-label">Capital:</label>
+                        <input type="text" class="form-control" id="capital-edit" name="capital">
+                    </div>
+                    <div class="mb-3">
+                        <label for="code-edit" class="col-form-label">Code:</label>
+                        <input type="text" class="form-control" id="code-edit" name="code">
+                    </div>
+                    <div class="mb-3">
+                        <label for="continent-edit" class="col-form-label">Continent:</label>
+                        <input type="text" class="form-control" id="continent-edit" name="continent">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nationality-edit" class="col-form-label">Nationality:</label>
+                        <input type="text" class="form-control" id="nationality-edit" name="nationality">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Vendor JS Files -->
 <script src="/vendor/apexcharts/apexcharts.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="/js/country.js"></script>
 <script src="/vendor/chart.js/chart.min.js"></script>
 <script src="/vendor/echarts/echarts.min.js"></script>
 <script src="/vendor/quill/quill.min.js"></script>

@@ -1,6 +1,6 @@
 package com.example.fleetApp.dto.countries;
 
-public class ListCountryViewModel {
+public class CountryModel {
     private Long id;
     private String code;
     private String capital;
@@ -12,7 +12,7 @@ public class ListCountryViewModel {
         return id;
     }
 
-    public ListCountryViewModel setId(Long id) {
+    public CountryModel setId(Long id) {
         this.id = id;
         return this;
     }
@@ -21,7 +21,7 @@ public class ListCountryViewModel {
         return code;
     }
 
-    public ListCountryViewModel setCode(String code) {
+    public CountryModel setCode(String code) {
         this.code = code;
         return this;
     }
@@ -30,7 +30,7 @@ public class ListCountryViewModel {
         return capital;
     }
 
-    public ListCountryViewModel setCapital(String capital) {
+    public CountryModel setCapital(String capital) {
         this.capital = capital;
         return this;
     }
@@ -39,7 +39,7 @@ public class ListCountryViewModel {
         return description;
     }
 
-    public ListCountryViewModel setDescription(String description) {
+    public CountryModel setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -48,7 +48,7 @@ public class ListCountryViewModel {
         return nationality;
     }
 
-    public ListCountryViewModel setNationality(String nationality) {
+    public CountryModel setNationality(String nationality) {
         this.nationality = nationality;
         return this;
     }
@@ -57,7 +57,7 @@ public class ListCountryViewModel {
         return continent;
     }
 
-    public ListCountryViewModel setContinent(String continent) {
+    public CountryModel setContinent(String continent) {
         this.continent = continent;
         return this;
     }

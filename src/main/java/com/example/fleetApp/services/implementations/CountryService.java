@@ -1,13 +1,14 @@
 package com.example.fleetApp.services.implementations;
 
 import com.example.fleetApp.dto.countries.AddCountryFormModel;
-import com.example.fleetApp.dto.countries.ListCountryViewModel;
+import com.example.fleetApp.dto.countries.CountryModel;
 import com.example.fleetApp.models.Country;
 import com.example.fleetApp.repositories.ICountryRepository;
 import com.example.fleetApp.services.interfaces.ICountryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CountryService implements ICountryService {
@@ -17,10 +18,10 @@ public class CountryService implements ICountryService {
         this.countryRepository = countryRepository;
     }
 
-    public List<ListCountryViewModel> getCountries() {
+    public List<CountryModel> getCountries() {
         return this.countryRepository.findAll()
                 .stream()
-                .map(c -> new ListCountryViewModel()
+                .map(c -> new CountryModel()
                         .setId(c.getId())
                         .setNationality(c.getNationality())
                         .setDescription(c.getDescription())
@@ -39,5 +40,16 @@ public class CountryService implements ICountryService {
                 .setDescription(formModel.getDescription());
 
         this.countryRepository.save(country);
+    }
+
+    public Optional<CountryModel> findById(Long id) {
+        return this.countryRepository.findById(id)
+                .map(entity -> new CountryModel()
+                        .setCapital(entity.getCapital())
+                        .setDescription(entity.getDescription())
+                        .setNationality(entity.getNationality())
+                        .setCode(entity.getCode())
+                        .setId(entity.getId())
+                        .setContinent(entity.getContinent()));
     }
 }

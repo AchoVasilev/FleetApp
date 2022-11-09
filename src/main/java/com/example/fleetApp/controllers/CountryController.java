@@ -1,12 +1,12 @@
 package com.example.fleetApp.controllers;
 
 import com.example.fleetApp.dto.countries.AddCountryFormModel;
+import com.example.fleetApp.dto.countries.CountryModel;
 import com.example.fleetApp.services.interfaces.ICountryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/countries")
@@ -23,6 +23,18 @@ public class CountryController {
         model.addAttribute("countries", countries);
 
         return "countries";
+    }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public ResponseEntity<CountryModel> findById(@PathVariable("id") Long id) {
+        var countryOpt = this.countryService.findById(id);
+
+        if (countryOpt.isPresent()) {
+            return ResponseEntity.ok(countryOpt.get());
+        }
+
+        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping("/addCountry")
