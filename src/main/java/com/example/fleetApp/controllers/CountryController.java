@@ -1,9 +1,11 @@
 package com.example.fleetApp.controllers;
 
+import com.example.fleetApp.dto.countries.AddCountryFormModel;
 import com.example.fleetApp.services.interfaces.ICountryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -21,5 +23,12 @@ public class CountryController {
         model.addAttribute("countries", countries);
 
         return "countries";
+    }
+
+    @PostMapping("/addCountry")
+    public String addCountry(AddCountryFormModel formModel) {
+        this.countryService.addCountry(formModel);
+
+        return "redirect:/countries";
     }
 }
