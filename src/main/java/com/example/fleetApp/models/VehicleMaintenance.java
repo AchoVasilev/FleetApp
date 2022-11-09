@@ -15,6 +15,7 @@ public class VehicleMaintenance extends Auditable<String> {
 
     private Long vehicleId;
     @ManyToOne
+    @JoinColumn(name="vehicleId", insertable=false, updatable=false)
     private Vehicle vehicle;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -27,6 +28,7 @@ public class VehicleMaintenance extends Auditable<String> {
 
     private Long supplierId;
     @ManyToOne
+    @JoinColumn(name="supplierId", insertable=false, updatable=false)
     private Supplier supplier;
 
     private String remarks;

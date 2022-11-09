@@ -13,8 +13,9 @@ public class Vehicle {
     private Long id;
     private String name;
 
-    private Long vehicleId;
+    private Long vehicleTypeId;
     @ManyToOne
+    @JoinColumn(name="vehicleTypeId", insertable=false, updatable=false)
     private VehicleType vehicleType;
     private String vehicleNumber;
 
@@ -27,6 +28,7 @@ public class Vehicle {
 
     private Long vehicleMakeId;
     @ManyToOne
+    @JoinColumn(name="vehicleMakeId", insertable=false, updatable=false)
     private VehicleMake vehicleMake;
 
     private Double power;
@@ -34,6 +36,7 @@ public class Vehicle {
 
     private Long vehicleStatusId;
     @ManyToOne
+    @JoinColumn(name="vehicleStatusId", insertable=false, updatable=false)
     private VehicleStatus vehicleStatus;
 
     private Double netWeight;
@@ -41,14 +44,17 @@ public class Vehicle {
 
     private Long employeeId;
     @ManyToOne
+    @JoinColumn(name="employeeId", insertable=false, updatable=false)
     private Employee inCharge;
 
     private Long vehicleModelId;
     @ManyToOne
+    @JoinColumn(name="vehicleModelId", insertable=false, updatable=false)
     private VehicleModel vehicleModel;
 
     private Long locationId;
     @ManyToOne
+    @JoinColumn(name = "locationId", insertable = false, updatable = false)
     private Location location;
 
     public Long getId() {
@@ -69,12 +75,12 @@ public class Vehicle {
         return this;
     }
 
-    public Long getVehicleId() {
-        return vehicleId;
+    public Long getVehicleTypeId() {
+        return vehicleTypeId;
     }
 
-    public Vehicle setVehicleId(Long vehicleId) {
-        this.vehicleId = vehicleId;
+    public Vehicle setVehicleTypeId(Long vehicleTypeId) {
+        this.vehicleTypeId = vehicleTypeId;
         return this;
     }
 

@@ -18,10 +18,12 @@ public class Invoice {
 
     private Long invoiceStatusId;
     @ManyToOne
+    @JoinColumn(name="invoiceStatusId", insertable=false, updatable=false)
     private InvoiceStatus invoiceStatus;
 
     private Long clientId;
     @ManyToOne
+    @JoinColumn(name="clientId", insertable=false, updatable=false)
     private Client client;
 
     public Long getId() {

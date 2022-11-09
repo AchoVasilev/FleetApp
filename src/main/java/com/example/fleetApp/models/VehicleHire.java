@@ -15,6 +15,7 @@ public class VehicleHire {
 
     private Long vehicleId;
     @ManyToOne
+    @JoinColumn(name="vehicleId", insertable=false, updatable=false)
     private Vehicle vehicle;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -27,10 +28,12 @@ public class VehicleHire {
 
     private Long clientId;
     @ManyToOne
+    @JoinColumn(name="clientId", insertable=false, updatable=false)
     private Client client;
 
     private Long locationId;
     @ManyToOne
+    @JoinColumn(name="locationId", insertable=false, updatable=false)
     private Location location;
 
     private BigDecimal price;

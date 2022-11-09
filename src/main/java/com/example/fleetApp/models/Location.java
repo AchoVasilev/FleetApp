@@ -10,10 +10,12 @@ public class Location extends CommonObject{
 
     private Long countryId;
     @ManyToOne
+    @JoinColumn(name="countryId", insertable=false, updatable=false)
     private Country country;
 
     private Long stateId;
     @ManyToOne
+    @JoinColumn(name="stateId", insertable=false, updatable=false)
     private State state;
 
     public String getCity() {

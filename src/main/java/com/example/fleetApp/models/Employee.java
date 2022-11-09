@@ -16,10 +16,12 @@ public class Employee {
 
     private Long employeeTypeId;
     @ManyToOne
+    @JoinColumn(name = "employeeTypeId", insertable = false, updatable = false)
     private EmployeeType employeeType;
 
     private Long jobTitleId;
     @ManyToOne
+    @JoinColumn(name = "jobTitleId", insertable = false, updatable = false)
     private JobTitle jobTitle;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
