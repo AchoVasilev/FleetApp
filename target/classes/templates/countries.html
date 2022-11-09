@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+  <title>Countries</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Components / Accordion - NiceAdmin Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -269,7 +269,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <th:block th:include="~{fragments/sidebar}"></th:block>
+  <th:block th:include="~{/fragments/sidebar}"></th:block>
   <!-- End Sidebar-->
 
   <main id="main" class="main">
@@ -285,11 +285,24 @@
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section">
-      <div class="row">
-        <h1>List of countries</h1>
-      </div>
-    </section>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Description</th>
+        <th scope="col">Capital</th>
+        <th scope="col">Code</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="country : ${countries}">
+        <td th:text="${country.id}"></td>
+        <td th:text="${country.description}"></td>
+        <td th:text="${country.capital}"></td>
+        <td th:text="${country.code}"></td>
+      </tr>
+      </tbody>
+    </table>
 
   </main><!-- End #main -->
 
