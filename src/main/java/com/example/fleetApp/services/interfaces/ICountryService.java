@@ -14,4 +14,6 @@ public interface ICountryService {
     Optional<CountryModel> findById(Long id);
 
     boolean editById(Long id, CountryModel model);
+
+    boolean deleteById(Long id);
 }

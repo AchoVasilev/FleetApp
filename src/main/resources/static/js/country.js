@@ -1,9 +1,44 @@
 document.addEventListener('DOMContentLoaded', async function () {
-    const modalEl = document.getElementById('editModal');
-    modalEl.addEventListener('show.bs.modal', ev => onModal(ev, modalEl));
+    const editModal = document.getElementById('editModal');
+    editModal.addEventListener('show.bs.modal', ev => onEditModal(ev, editModal));
+
+    const deleteModal = document.getElementById('deleteModal');
+    deleteModal.addEventListener('show.bs.modal', ev => onDeleteModal(ev, deleteModal));
 });
 
-async function onModal(ev, modalEl) {
+function onDeleteModal(ev, deleteModal) {
+    let btn = ev.relatedTarget;
+
+    const countryId = btn.id;
+
+    const deleteBtn = document.getElementById('delete-btn');
+    deleteBtn.addEventListener('click', ev => onDelete(ev, deleteModal, countryId));
+}
+
+async function onDelete(ev, deleteModal, countryId) {
+    ev.preventDefault();
+
+    try {
+        const response = await fetch('/api/countries/' + countryId, {
+            method: 'delete',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+
+        if (response.ok !== true) {
+            const error = await response.json();
+            throw new Error(error.message);
+        }
+
+        await response.json();
+        deleteModal.style.display = 'none';
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function onEditModal(ev, modalEl) {
     let btn = ev.relatedTarget;
 
     const countryId = btn.id;

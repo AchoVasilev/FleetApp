@@ -35,4 +35,14 @@ public class CountriesApiController {
 
         return ResponseEntity.badRequest().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable("id") Long id) {
+        var isDeleted = this.countryService.deleteById(id);
+        if (isDeleted) {
+            return ResponseEntity.ok("Success");
+        }
+
+        return ResponseEntity.badRequest().build();
+    }
 }

@@ -71,4 +71,16 @@ public class CountryService implements ICountryService {
 
         return false;
     }
+
+    public boolean deleteById(Long id) {
+        var entityOpt = this.countryRepository.findById(id);
+
+        if (entityOpt.isPresent()) {
+            this.countryRepository.delete(entityOpt.get());
+
+            return true;
+        }
+
+        return false;
+    }
 }
