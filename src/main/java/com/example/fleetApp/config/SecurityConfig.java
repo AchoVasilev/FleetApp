@@ -13,11 +13,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                .antMatchers("/**").permitAll()
                 .anyRequest().permitAll();
 
         httpSecurity.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 
+        httpSecurity.csrf().disable();
         return httpSecurity.build();
     }
 }

@@ -123,7 +123,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form th:action="@{/countries}" th:method="put" id="edit-form">
+                <form id="edit-form">
                     <div class="mb-3">
                         <label for="description-edit" class="col-form-label">Description:</label>
                         <input type="text" class="form-control" id="description-edit" name="description">
@@ -144,6 +144,7 @@
                         <label for="nationality-edit" class="col-form-label">Nationality:</label>
                         <input type="text" class="form-control" id="nationality-edit" name="nationality">
                     </div>
+<!--                    <input id="token" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
                 <div class="modal-footer">

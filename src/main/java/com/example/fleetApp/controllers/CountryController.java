@@ -25,18 +25,6 @@ public class CountryController {
         return "countries";
     }
 
-    @GetMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<CountryModel> findById(@PathVariable("id") Long id) {
-        var countryOpt = this.countryService.findById(id);
-
-        if (countryOpt.isPresent()) {
-            return ResponseEntity.ok(countryOpt.get());
-        }
-
-        return ResponseEntity.badRequest().build();
-    }
-
     @PostMapping("/addCountry")
     public String addCountry(AddCountryFormModel formModel) {
         this.countryService.addCountry(formModel);

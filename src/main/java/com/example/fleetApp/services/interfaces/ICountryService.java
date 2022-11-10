@@ -12,4 +12,6 @@ public interface ICountryService {
     void addCountry(AddCountryFormModel formModel);
 
     Optional<CountryModel> findById(Long id);
+
+    boolean editById(Long id, CountryModel model);
 }

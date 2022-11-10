@@ -52,4 +52,23 @@ public class CountryService implements ICountryService {
                         .setId(entity.getId())
                         .setContinent(entity.getContinent()));
     }
+
+    public boolean editById(Long id, CountryModel model) {
+        var entityOpt = this.countryRepository.findById(id);
+        if (entityOpt.isPresent()) {
+            var entity = entityOpt.get();
+
+            entity.setCode(model.getCode())
+                    .setCapital(model.getCapital())
+                    .setContinent(model.getContinent())
+                    .setNationality(model.getNationality())
+                    .setDescription(model.getDescription());
+
+            this.countryRepository.save(entity);
+
+            return true;
+        }
+
+        return false;
+    }
 }
