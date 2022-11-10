@@ -51,10 +51,13 @@
                 <div class="btn-group">
                     <button th:id="${country.id}"
                             type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
-                        Edit
+                        <i class="pencil-fill"></i>
                     </button>
+                    <a th:href="@{/countries/id(id=${country.id})}" class="btn btn-success">
+                        <i class="file-earmark-post-fill"></i>
+                    </a>
                     <button th:id="${country.id}" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                        Delete
+                        <i class="trash-fill"></i>
                     </button>
                 </div>
             </td>

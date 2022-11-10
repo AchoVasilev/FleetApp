@@ -9,9 +9,9 @@ import javax.persistence.MappedSuperclass;
 public class CommonObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String description;
-    private String details;
+    protected Long id;
+    protected String description;
+    protected String details;
 
     public Long getId() {
         return id;
