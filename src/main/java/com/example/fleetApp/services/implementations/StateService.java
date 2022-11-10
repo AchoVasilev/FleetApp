@@ -8,6 +8,7 @@ import com.example.fleetApp.services.interfaces.IStateService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StateService implements IStateService {
@@ -38,5 +39,38 @@ public class StateService implements IStateService {
                 .setCountryId(state.getCountryId());
 
         this.stateRepository.save(newState);
+    }
+
+    public Optional<StateModel> findById(Long id) {
+        return this.stateRepository.findById(id)
+                .map(entity -> new StateModel(entity.getId(), entity.getName(), entity.getCapital(), entity.getCode()));
+    }
+
+    public boolean editById(Long id, StateModel model) {
+        var entity = this.stateRepository.findById(id);
+        if (entity.isPresent()) {
+            var state = entity.get();
+            state.setCapital(model.getCapital())
+                    .setCode(model.getCode())
+                    .setName(model.getName());
+
+            this.stateRepository.save(state);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean deleteById(Long id) {
+        var entityOpt = this.stateRepository.findById(id);
+
+        if (entityOpt.isPresent()) {
+            this.stateRepository.delete(entityOpt.get());
+
+            return true;
+        }
+
+        return false;
     }
 }

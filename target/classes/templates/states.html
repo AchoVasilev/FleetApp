@@ -22,7 +22,7 @@
       <h1>Countries Page</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
           <li class="breadcrumb-item">Pages</li>
           <li class="breadcrumb-item active">Blank</li>
         </ol>
@@ -53,7 +53,7 @@
                     type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
               <i class="pencil-fill"></i>
             </button>
-            <a th:href="@{/countries/id(id=${state.id})}" class="btn btn-success">
+            <a th:href="@{/states/id(id=${state.id})}" class="btn btn-success">
               <i class="file-earmark-post-fill"></i>
             </a>
             <button th:id="${state.id}" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
@@ -118,14 +118,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editModalLabel">Edit Country</h5>
+        <h5 class="modal-title" id="editModalLabel">Edit State</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form id="edit-form">
           <div class="mb-3">
-            <label for="description-edit" class="col-form-label">Description:</label>
-            <input type="text" class="form-control" id="description-edit" name="description">
+            <label for="name-edit" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="name-edit" name="name">
           </div>
           <div class="mb-3">
             <label for="capital-edit" class="col-form-label">Capital:</label>
@@ -134,14 +134,6 @@
           <div class="mb-3">
             <label for="code-edit" class="col-form-label">Code:</label>
             <input type="text" class="form-control" id="code-edit" name="code">
-          </div>
-          <div class="mb-3">
-            <label for="continent-edit" class="col-form-label">Continent:</label>
-            <input type="text" class="form-control" id="continent-edit" name="continent">
-          </div>
-          <div class="mb-3">
-            <label for="nationality-edit" class="col-form-label">Nationality:</label>
-            <input type="text" class="form-control" id="nationality-edit" name="nationality">
           </div>
           <!--                    <input id="token" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -173,7 +165,7 @@
 </div>
 
 <th:block th:include="~{/fragments/scripts}"></th:block>
-
+<script src="/js/state.js"></script>
 </body>
 
 </html>
