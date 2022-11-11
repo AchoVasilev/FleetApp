@@ -18,7 +18,7 @@ public class LocationService implements ILocationService {
         this.locationRepository = locationRepository;
     }
 
-    public List<LocationViewModel> getStates() {
+    public List<LocationViewModel> getLocations() {
         return this.locationRepository
                 .findAll()
                 .stream()
@@ -32,7 +32,7 @@ public class LocationService implements ILocationService {
                 .toList();
     }
 
-    public void addState(LocationFormModel locationModel) {
+    public void addLocation(LocationFormModel locationModel) {
         var location = new Location();
         location
                 .setStateId(locationModel.getStateId())

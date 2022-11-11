@@ -26,7 +26,8 @@ public class StateService implements IStateService {
                         state.getId(),
                         state.getName(),
                         state.getCapital(),
-                        state.getCode()
+                        state.getCode(),
+                        state.getCountryId()
                 ))
                 .toList();
     }
@@ -43,7 +44,12 @@ public class StateService implements IStateService {
 
     public Optional<StateModel> findById(Long id) {
         return this.stateRepository.findById(id)
-                .map(entity -> new StateModel(entity.getId(), entity.getName(), entity.getCapital(), entity.getCode()));
+                .map(entity -> new StateModel(
+                        entity.getId(),
+                        entity.getName(),
+                        entity.getCapital(),
+                        entity.getCode(),
+                        entity.getCountryId()));
     }
 
     public boolean editById(Long id, StateModel model) {

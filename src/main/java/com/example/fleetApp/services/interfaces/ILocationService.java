@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ILocationService {
-    List<LocationViewModel> getStates();
+    List<LocationViewModel> getLocations();
 
-    void addState(LocationFormModel locationModel);
+    void addLocation(LocationFormModel locationModel);
 
     Optional<LocationViewModel> findById(Long id);
 
