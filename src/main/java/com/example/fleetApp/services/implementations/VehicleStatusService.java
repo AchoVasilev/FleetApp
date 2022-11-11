@@ -18,7 +18,7 @@ public class VehicleStatusService implements IVehicleStatusService {
         this.vehicleStatusRepository = vehicleStatusRepository;
     }
 
-    public List<VehicleStatusViewModel> getVehicleTypes() {
+    public List<VehicleStatusViewModel> getVehicleStatuses() {
         return this.vehicleStatusRepository
                 .findAll()
                 .stream()

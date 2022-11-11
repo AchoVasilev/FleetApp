@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IVehicleStatusService {
-    List<VehicleStatusViewModel> getVehicleTypes();
+    List<VehicleStatusViewModel> getVehicleStatuses();
 
     void addVehicleType(VehicleStatusFormModel formModel);
 

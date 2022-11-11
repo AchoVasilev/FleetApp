@@ -19,7 +19,7 @@ public class VehicleStatusController {
 
     @GetMapping
     public String getVehicleStatus(Model model) {
-        var vehicleStatuses = this.vehicleStatusService.getVehicleTypes();
+        var vehicleStatuses = this.vehicleStatusService.getVehicleStatuses();
         model.addAttribute("vehicleStatuses", vehicleStatuses);
 
         return "vehicle-status";
