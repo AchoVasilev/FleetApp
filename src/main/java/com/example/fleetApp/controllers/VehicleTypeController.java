@@ -26,9 +26,9 @@ public class VehicleTypeController {
     }
 
     @PostMapping
-    public String addLocation(VehicleTypeFormModel model) {
+    public String addVehicleStatus(VehicleTypeFormModel model) {
         this.vehicleTypeService.addVehicleType(model);
 
-        return "redirect:/locations";
+        return "redirect:/vehicleType";
     }
 }
