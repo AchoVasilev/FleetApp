@@ -17,9 +17,9 @@ public class StatesApiController {
     @GetMapping("/{id}")
     @ResponseBody
     public ResponseEntity<StateModel> findById(@PathVariable("id") Long id) {
-        var countryOpt = this.stateService.findById(id);
+        var statesOpt = this.stateService.findById(id);
 
-        return countryOpt
+        return statesOpt
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.badRequest().build());
 

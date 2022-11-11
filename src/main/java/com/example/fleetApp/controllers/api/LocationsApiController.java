@@ -18,9 +18,9 @@ public class LocationsApiController {
     @GetMapping("/{id}")
     @ResponseBody
     public ResponseEntity<LocationViewModel> findById(@PathVariable("id") Long id) {
-        var countryOpt = this.locationService.findById(id);
+        var locationsOpt = this.locationService.findById(id);
 
-        return countryOpt
+        return locationsOpt
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.badRequest().build());
 
