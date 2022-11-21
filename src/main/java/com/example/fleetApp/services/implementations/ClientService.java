@@ -24,8 +24,7 @@ public class ClientService implements IClientService {
                 .map(this::map).toList();
     }
 
-    public void add(ClientFormModel clientFormModel)
-    {
+    public void add(ClientFormModel clientFormModel) {
         var entity = new Client()
                 .setAddress(clientFormModel.getAddress())
                 .setCity(clientFormModel.getCity())
@@ -39,6 +38,29 @@ public class ClientService implements IClientService {
                 .setWebsite(clientFormModel.getWebsite());
 
         this.clientRepository.save(entity);
+    }
+
+    public boolean edit(Long id, ClientFormModel model) {
+        var entity = this.clientRepository.findById(id);
+        if (entity.isPresent()) {
+            var client = entity.get();
+            client.setAddress(model.getAddress())
+                    .setCity(model.getCity())
+                    .setDetails(model.getDetails())
+                    .setEmail(model.getEmail())
+                    .setMobile(model.getMobile())
+                    .setPhone(model.getPhone())
+                    .setCountryId(model.getCountryId())
+                    .setStateId(model.getStateId())
+                    .setName(model.getName())
+                    .setWebsite(model.getWebsite());
+
+            this.clientRepository.save(client);
+
+            return true;
+        }
+
+        return false;
     }
 
     public Optional<ClientViewModel> findById(Long clientId) {

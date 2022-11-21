@@ -13,5 +13,7 @@ public interface IClientService {
 
     Optional<ClientViewModel> findById(Long clientId);
 
+    boolean edit(Long id, ClientFormModel model);
+
     boolean delete(Long clientId);
 }
